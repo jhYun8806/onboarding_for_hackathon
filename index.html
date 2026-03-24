@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily ToDoList</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <span class="logo">✅ Daily ToDoList</span>
+      </div>
+      <div class="header-right">
+        <span class="today-date" id="todayDate"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Board -->
+  <main class="board">
+    <div class="columns" id="columns">
+
+      <!-- 할 일 -->
+      <div class="column" id="col-todo" data-column="todo">
+        <div class="column-header">
+          <span class="column-title">할 일</span>
+          <span class="column-count" id="count-todo">0</span>
+        </div>
+        <div class="card-list" id="list-todo"
+          ondragover="onDragOver(event)"
+          ondrop="onDrop(event, 'todo')"
+          ondragleave="onDragLeave(event)">
+        </div>
+        <button class="add-card-btn" onclick="openModal('todo')">+ 카드 추가</button>
+      </div>
+
+      <!-- 진행 중 -->
+      <div class="column" id="col-inprogress" data-column="inprogress">
+        <div class="column-header">
+          <span class="column-title">진행 중</span>
+          <span class="column-count" id="count-inprogress">0</span>
+        </div>
+        <div class="card-list" id="list-inprogress"
+          ondragover="onDragOver(event)"
+          ondrop="onDrop(event, 'inprogress')"
+          ondragleave="onDragLeave(event)">
+        </div>
+        <button class="add-card-btn" onclick="openModal('inprogress')">+ 카드 추가</button>
+      </div>
+
+      <!-- 완료 -->
+      <div class="column" id="col-done" data-column="done">
+        <div class="column-header">
+          <span class="column-title">완료</span>
+          <span class="column-count" id="count-done">0</span>
+        </div>
+        <div class="card-list" id="list-done"
+          ondragover="onDragOver(event)"
+          ondrop="onDrop(event, 'done')"
+          ondragleave="onDragLeave(event)">
+        </div>
+        <button class="add-card-btn" onclick="openModal('done')">+ 카드 추가</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">태스크 추가</h2>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>제목 <span class="required">*</span></label>
+          <input type="text" id="inputTitle" placeholder="태스크 제목을 입력하세요" />
+        </div>
+        <div class="form-group">
+          <label>설명</label>
+          <textarea id="inputDesc" placeholder="상세 내용을 입력하세요 (선택)" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>마감일</label>
+          <input type="date" id="inputDate" />
+        </div>
+        <div class="form-group">
+          <label>우선순위</label>
+          <div class="priority-group">
+            <label class="priority-option">
+              <input type="radio" name="priority" value="high" /> <span class="priority-badge high">높음</span>
+            </label>
+            <label class="priority-option">
+              <input type="radio" name="priority" value="medium" checked /> <span class="priority-badge medium">보통</span>
+            </label>
+            <label class="priority-option">
+              <input type="radio" name="priority" value="low" /> <span class="priority-badge low">낮음</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">취소</button>
+        <button class="btn-save" onclick="saveTask()">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirm Modal -->
+  <div class="modal-overlay" id="deleteOverlay">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2 class="modal-title">태스크 삭제</h2>
+      </div>
+      <div class="modal-body">
+        <p>이 태스크를 삭제하시겠습니까?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeDeleteModal()">취소</button>
+        <button class="btn-delete" onclick="confirmDelete()">삭제</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
