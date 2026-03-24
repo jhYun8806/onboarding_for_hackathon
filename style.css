@@ -432,10 +432,127 @@ textarea { resize: vertical; }
   font-size: 13px;
 }
 
+/* ===== Login Screen ===== */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #F0F2FF 0%, #F7F8FC 100%);
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(91, 108, 246, 0.12);
+  width: 380px;
+  max-width: 95vw;
+}
+
+.login-logo {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.login-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #5B6CF6;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.login-desc {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 20px;
+  border: 1.5px solid #E0E2EE;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+
+.btn-google:hover {
+  background: #F7F8FF;
+  border-color: #5B6CF6;
+  box-shadow: 0 2px 12px rgba(91, 108, 246, 0.15);
+}
+
+/* ===== User Info (Header) ===== */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #E0E2EE;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.btn-logout {
+  background: none;
+  border: 1.5px solid #E0E2EE;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-logout:hover {
+  background: #FFEEEE;
+  border-color: #FF5C5C;
+  color: #FF5C5C;
+}
+
+/* ===== Loading Spinner ===== */
+.btn-save.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .board { padding: 16px; }
   .columns { flex-direction: column; }
   .column { min-width: unset; }
   .header-inner { padding: 0 16px; }
+  .user-name { display: none; }
+  .today-date { display: none; }
 }
